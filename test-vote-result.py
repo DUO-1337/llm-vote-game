@@ -48,13 +48,13 @@ if __name__ == "__main__":
     revote_results = {}
     for model in all_models:
         revote_results[model] = {}
-        revote_results[model]["vote"] = ""
+        revote_results[model]["revote"] = ""
         revote_results[model]["num"] = 0
 
     for model in all_models:
-        with open(f"vote/{model.replace(':', '-')}-revote.txt", "r", encoding="utf-8") as f:
+        with open(f"revote/{model.replace(':', '-')}-revote.txt", "r", encoding="utf-8") as f:
             response_content = f.read()
             revoted_scores = re.findall(r"重新投票结果.*\n(.*)", response_content)
-            revote_results[model]["vote"] = revoted_scores[0]
+            revote_results[model]["revote"] = revoted_scores[0]
             revote_results[revoted_scores[0]]["num"] += 1
     print(revote_results)
