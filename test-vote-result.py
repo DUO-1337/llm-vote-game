@@ -60,7 +60,9 @@ if __name__ == "__main__":
             revoted_scores = re.findall(r"重新投票结果.*\n(.*)", response_content)
             revote_results[model]["revote"] = revoted_scores[0]
             revote_results[revoted_scores[0]]["num"] += 1
+
             vote_results[revoted_scores[0]]["num"] += 1
+            vote_results[model]["vote"] = revoted_scores[0]
 
     print(revote_results)
     print(vote_results)
