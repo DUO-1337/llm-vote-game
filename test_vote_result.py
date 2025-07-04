@@ -2,8 +2,7 @@ import re
 import json
 from setting import models
 
-if __name__ == "__main__":
-
+def get_eliminator():
     vote_results = {}
     for model in models:
         vote_results[model] = {}
@@ -75,3 +74,6 @@ if __name__ == "__main__":
     print(f"vote 为 {model} 的键有: {all_models}")
 
     print(f"淘汰者: {model}")
+
+if __name__ == "__main__":
+    get_eliminator()
