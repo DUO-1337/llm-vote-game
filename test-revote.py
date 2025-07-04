@@ -81,7 +81,7 @@ def do_revote(vote_model, model, vote_context, against_context,):
         else:
             response_content = response['message']['content'].strip()
         
-        with open(f"revote/{vote_model.replace(':', '-')}-revote-{model.replace(':', '-')}.txt", "w", encoding="utf-8") as f:
+        with open(f"revote/{vote_model.replace(':', '-')}.txt", "w", encoding="utf-8") as f:
             f.write(f"[{vote_model}]: {response_content}" + "\n")
             f.write(f"------------------------------------------------------------------------" + "\n")
 
@@ -92,7 +92,7 @@ def do_revote(vote_model, model, vote_context, against_context,):
     except Exception as e:
     
         response_content = "模型调用失败，未能做出回答。"
-        with open(f"revote/{vote_model.replace(':', '-')}-revote-{model.replace(':', '-')}.txt", "w", encoding="utf-8") as f:
+        with open(f"revote/{vote_model.replace(':', '-')}.txt", "w", encoding="utf-8") as f:
             f.write(f"[{vote_model}]: {response_content}" + "\n")
             f.write(f"------------------------------------------------------------------------" + "\n")
 
