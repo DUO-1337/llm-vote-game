@@ -52,7 +52,7 @@ if __name__ == "__main__":
         revote_results[model]["num"] = 0
 
     for model in models:
-        with open(f"vote/{model.replace(':', '-')}-vote.txt", "r", encoding="utf-8") as f:
+        with open(f"vote/{model.replace(':', '-')}-revote.txt", "r", encoding="utf-8") as f:
             response_content = f.read()
             revoted_scores = re.findall(r"重新投票结果.*\n(.*)", response_content)
             revote_results[model]["vote"] = revoted_scores[0]
