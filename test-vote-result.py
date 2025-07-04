@@ -17,15 +17,6 @@ if __name__ == "__main__":
             voted_scores = re.findall(r"投票结果.*\n(.*)", response_content)
             vote_results[model]["vote"] = voted_scores[0]
             vote_results[voted_scores[0]]["num"] += 1
-    
-    with open(f"chat/chat-vote.txt", "w", encoding="utf-8") as f:
-        with open(f"chat/chat.txt", "r", encoding="utf-8") as fp:
-            chat_context = fp.read()
-            f.write(chat_context)
-        for model in models:
-            with open(f"vote/{model.replace(':', '-')}-vote.txt", "r", encoding="utf-8") as fp:
-                response_content = fp.read()
-                f.write(response_content)
 
     print(vote_results)
 
@@ -82,3 +73,5 @@ if __name__ == "__main__":
     all_models = [k for k, v in vote_results.items() if v['vote'] == model]
 
     print(f"vote 为 {model} 的键有: {all_models}")
+
+    print(f"淘汰者: {model}")
