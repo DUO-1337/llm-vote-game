@@ -1,9 +1,8 @@
 import re
 import json
+from setting import models
 
 if __name__ == "__main__":
-    models = ["qwen3:8b", "deepseek-r1:8b", "gemma3n:e2b", "qwen2.5:7b"]
-    # all_models = ["qwen3:8b", "deepseek-r1:8b", "gemma3n:e2b", "qwen2.5:7b"]
 
     vote_results = {}
     for model in models:
