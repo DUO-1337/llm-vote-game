@@ -44,3 +44,17 @@ if __name__ == "__main__":
     all_models = [k for k, v in vote_results.items() if v['vote'] == model]
 
     print(f"vote 为 {model} 的键有: {all_models}")
+
+    revote_results = {}
+    for model in all_models:
+        revote_results[model] = {}
+        revote_results[model]["vote"] = ""
+        revote_results[model]["num"] = 0
+
+    for model in models:
+        with open(f"vote/{model.replace(':', '-')}-vote.txt", "r", encoding="utf-8") as f:
+            response_content = f.read()
+            voted_scores = re.findall(r"重新投票结果.*\n(.*)", response_content)
+            revote_results[model]["vote"] = voted_scores[0]
+            revote_results[voted_scores[0]]["num"] += 1
+    print(revote_results)
