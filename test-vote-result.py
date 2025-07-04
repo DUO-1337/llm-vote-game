@@ -64,3 +64,19 @@ if __name__ == "__main__":
 
     print(revote_results)
     print(vote_results)
+
+    max_num = -float('inf')  # 初始化为负无穷（确保第一个数会被替换）
+    max_key = None          # 初始化为 None
+
+    for key, value in vote_results.items():
+        current_num = value['num']
+        if current_num > max_num:
+            max_num = current_num
+            max_key = key
+
+    print(f"num 最大的键是: {max_key}")
+
+    model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
+    all_models = [k for k, v in vote_results.items() if v['vote'] == model]
+
+    print(f"vote 为 {model} 的键有: {all_models}")
