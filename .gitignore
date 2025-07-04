@@ -2,3 +2,4 @@
 /chat/*
 /revote/*
 /vote/*
+__pycache__
