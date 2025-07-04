@@ -45,6 +45,9 @@ if __name__ == "__main__":
 
     print(f"vote 为 {model} 的键有: {all_models}")
 
+    
+    vote_results[model]["num"] -= len(all_models)
+
     revote_results = {}
     for model in all_models:
         revote_results[model] = {}
@@ -57,4 +60,7 @@ if __name__ == "__main__":
             revoted_scores = re.findall(r"重新投票结果.*\n(.*)", response_content)
             revote_results[model]["revote"] = revoted_scores[0]
             revote_results[revoted_scores[0]]["num"] += 1
+            vote_results[revoted_scores[0]]["num"] += 1
+
     print(revote_results)
+    print(vote_results)
