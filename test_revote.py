@@ -116,8 +116,7 @@ def Rerevote(model, all_models):
             f.write(f"[{vote_model}]: {response_content}" + "\n")
             f.write(f"------------------------------------------------------------------------" + "\n")
 
-
-if __name__ == "__main__":
+def get_vote_result():
     vote_results = {}
     for model in models:
         vote_results[model] = {}
@@ -143,7 +142,12 @@ if __name__ == "__main__":
     model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
     all_models = [k for k, v in vote_results.items() if v['vote'] == model]
 
+    return model, all_models
+
+if __name__ == "__main__":
+
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()
 
+    model, all_models = get_vote_result()
     Rerevote(model, all_models)
