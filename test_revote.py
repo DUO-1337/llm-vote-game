@@ -101,13 +101,13 @@ def do_revote(vote_model, model, chat_context, vote_context, against_context,):
         return response_content
 
 
-def Rerevote(model, all_models, chat_context):
+def Rerevote(model, vote_models, chat_context):
     with open(f"chat/chat-vote-against.txt", "r", encoding="utf-8") as f:
         chat_vote_against_context = f.read()
     
     with open(f"chat/chat-vote-against-revote.txt", "w", encoding="utf-8") as f:
         f.write(chat_vote_against_context)
-        for vote_model in all_models:
+        for vote_model in vote_models:
             with open(f"vote/{vote_model.replace(':', '-')}-vote.txt", "r", encoding="utf-8") as fp:
                 vote_context = fp.read()
             with open(f"against/{model.replace(':', '-')}-against-{vote_model.replace(':', '-')}.txt", "r", encoding="utf-8") as fp:
@@ -140,16 +140,16 @@ def get_vote_result():
                 f.write(response_content)
     
     model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
-    all_models = [k for k, v in vote_results.items() if v['vote'] == model]
+    vote_models = [k for k, v in vote_results.items() if v['vote'] == model]
 
-    return model, all_models
+    return model, vote_models
 
 def Start_Revote():
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()
 
-    model, all_models = get_vote_result()
-    Rerevote(model, all_models, chat_context)
+    model, vote_models = get_vote_result()
+    Rerevote(model, vote_models, chat_context)
     return
 
 if __name__ == "__main__":
@@ -157,5 +157,5 @@ if __name__ == "__main__":
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()
 
-    model, all_models = get_vote_result()
-    Rerevote(model, all_models, chat_context)
+    model, vote_models = get_vote_result()
+    Rerevote(model, vote_models, chat_context)

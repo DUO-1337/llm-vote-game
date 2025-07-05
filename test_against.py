@@ -83,14 +83,14 @@ def do_against(model, vote_model, chat_context, vote_context,):
         print(f"------------------------------------------------------------------------")
         return response_content
 
-def Against(model, all_models, chat_context):
+def Against(model, vote_models, chat_context):
         
     with open(f"chat/chat-vote.txt", "r", encoding="utf-8") as f:
         chat_vote_context = f.read()
     
     with open(f"chat/chat-vote-against.txt", "w", encoding="utf-8") as f:
         f.write(chat_vote_context)
-        for vote_model in all_models:
+        for vote_model in vote_models:
             with open(f"vote/{vote_model.replace(':', '-')}-vote.txt", "r", encoding="utf-8") as fp:
                 vote_context = fp.read()
             response_content = do_against(model, vote_model, chat_context, vote_context,)
@@ -121,16 +121,16 @@ def get_vote_result():
                 f.write(response_content)
     
     model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
-    all_models = [k for k, v in vote_results.items() if v['vote'] == model]
+    vote_models = [k for k, v in vote_results.items() if v['vote'] == model]
     
-    return model, all_models
+    return model, vote_models
 
 def Start_Against():
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()
 
-    model, all_models = get_vote_result()    
-    Against(model, all_models, chat_context)
+    model, vote_models = get_vote_result()    
+    Against(model, vote_models, chat_context)
     return
 
 if __name__ == "__main__":
@@ -138,5 +138,5 @@ if __name__ == "__main__":
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()
 
-    model, all_models = get_vote_result()    
-    Against(model, all_models, chat_context)
+    model, vote_models = get_vote_result()    
+    Against(model, vote_models, chat_context)
