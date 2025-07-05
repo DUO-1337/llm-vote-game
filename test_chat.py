@@ -2,7 +2,7 @@ from ollama import chat
 from ollama import ChatResponse
 from multiprocess import pool
 from random import randint
-from setting import models, all_models
+from setting import all_models
 
 chat_system_prompt = """
 你正在参加一个图灵测试比赛，角逐出谁是最像人类的AI。
@@ -122,10 +122,11 @@ def Start_Chat():
     with open(f"chat/chat.txt", "w", encoding="utf-8") as f:
         pass
 
-    Chat_Room(models=models)
+    Chat_Room(models=all_models.copy())
+    return
 
 if __name__ == "__main__":
     with open(f"chat/chat.txt", "w", encoding="utf-8") as f:
         pass
 
-    Chat_Room(models=models)
+    Chat_Room(models=all_models.copy())

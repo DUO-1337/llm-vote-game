@@ -131,6 +131,7 @@ def Start_Against():
 
     model, all_models = get_vote_result()    
     Against(model, all_models, chat_context)
+    return
 
 if __name__ == "__main__":
 

@@ -150,6 +150,7 @@ def Start_Revote():
 
     model, all_models = get_vote_result()
     Rerevote(model, all_models)
+    return
 
 if __name__ == "__main__":
 

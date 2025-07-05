@@ -68,6 +68,7 @@ def get_eliminator():
 
 def Start_Eliminate():
     get_eliminator()
+    return
 
 if __name__ == "__main__":
     get_eliminator()

@@ -22,6 +22,7 @@ def Start_Init():
     dir_clear(vote_dir)
     dir_clear(against_dir)
     dir_clear(revote_dir)
+    return
 
 if __name__ == "__main__":
     # 定义目标目录
