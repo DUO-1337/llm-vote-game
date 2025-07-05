@@ -28,12 +28,12 @@ def get_eliminator():
             max_num = current_num
             max_key = key
 
-    print(f"num 最大的键是: {max_key}")
+    # print(f"num 最大的键是: {max_key}")
 
     model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
     all_models = [k for k, v in vote_results.items() if v['vote'] == model]
 
-    print(f"vote 为 {model} 的键有: {all_models}")
+    # print(f"vote 为 {model} 的键有: {all_models}")
 
     revote_results = vote_results.copy()
     revote_results[model]["num"] -= len(all_models)
@@ -56,12 +56,12 @@ def get_eliminator():
             max_num = current_num
             max_key = key
 
-    print(f"num 最大的键是: {max_key}")
+    # print(f"num 最大的键是: {max_key}")
 
     model = max(revote_results.keys(), key=lambda k: revote_results[k]['num'])
     all_models = [k for k, v in revote_results.items() if v['vote'] == model]
 
-    print(f"vote 为 {model} 的键有: {all_models}")
+    # print(f"vote 为 {model} 的键有: {all_models}")
 
     print(" "*len(f"淘汰者: {model}   ") + " |")
     print(f"淘汰者: {model} |")

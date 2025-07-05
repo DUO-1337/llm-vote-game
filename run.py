@@ -30,7 +30,6 @@ def get_vote_result():
                 response_content = fp.read()
                 f.write(response_content)
     
-    print(vote_results)
     model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
     vote_models = [k for k, v in vote_results.items() if v['vote'] == model]
     
@@ -40,7 +39,6 @@ if __name__ == '__main__':
     Start_Init()
     Start_Chat()
     Start_Vote()
-    get_vote_result()
     Start_Against()
     Start_Revote()
     eliminated_model = Start_Eliminate()
