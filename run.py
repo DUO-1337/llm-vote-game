@@ -30,18 +30,37 @@ def get_vote_result():
                 response_content = fp.read()
                 f.write(response_content)
     
-    model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
+    # 步骤1：提取所有num值
+    num_values = [item['num'] for item in vote_results.values()]
+
+    # 步骤2：找到num的最大值（处理空字典或无效数据的情况）
+    if not num_values:  # 处理字典为空的情况
+        max_num = None
+    else:
+        max_num = max(num_values)
+
+    # 步骤3：收集所有num等于最大值的键
+    max_keys = [key for key, item in vote_results.items() if item['num'] == max_num]
+
+    # 输出结果
+    print(f"num最大值为：{max_num}")
+    print(f"对应的key(s)为：{max_keys}")
+
     vote_models = [k for k, v in vote_results.items() if v['vote'] == model]
     
     return model, vote_models
 
 if __name__ == '__main__':
-    Start_Init()
-    Start_Chat()
-    Start_Vote()
-    Start_Against()
-    Start_Revote()
-    eliminated_model = Start_Eliminate()
+    while len(models) > 2:
+        Start_Init()
+        Start_Chat()
+        Start_Vote()
+        Start_Against()
+        Start_Revote()
+        eliminated_model = Start_Eliminate()
 
-    models.remove(eliminated_model)
-    all_models.remove(eliminated_model)
+        models.remove(eliminated_model)
+        all_models.remove(eliminated_model)
+    
+    print(f"比赛结束")
+    print(f"剩余模型：{models}")
