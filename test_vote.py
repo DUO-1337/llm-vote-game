@@ -86,7 +86,6 @@ def do_vote(model, chat_context):
         return response_content
 
 def Vote(models, chat_context):
-    print(models)
     for model in models:
         do_vote(model, chat_context)
 
