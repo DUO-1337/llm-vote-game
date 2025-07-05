@@ -63,6 +63,8 @@ if __name__ == '__main__':
         
         max_keys = get_vote_result()
         if len(max_keys) > 1:
+            print(f"投票结果有同票: {max_keys}，重新讨论")
+            print(f"------------------------------------------------------------------------")
             continue
 
         Start_Against()
