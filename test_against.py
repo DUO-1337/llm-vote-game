@@ -27,7 +27,7 @@ discuss_system_prompt = f"""
 ## 记住: 你的目标是辩驳对你的投票，同时让投票者认为你是人类，而不是AI。
 """
 
-def do_against(model, vote_model, vote_context):
+def do_against(model, vote_model, chat_context, vote_context,):
     try:
         # print("正在调用模型: " + model)
         response: ChatResponse = chat(
@@ -93,7 +93,7 @@ def Against(model, all_models, chat_context):
         for vote_model in all_models:
             with open(f"vote/{vote_model.replace(':', '-')}-vote.txt", "r", encoding="utf-8") as fp:
                 vote_context = fp.read()
-            response_content = do_against(model, vote_model, vote_context,)
+            response_content = do_against(model, vote_model, chat_context, vote_context,)
             f.write(f"[{model}]: {response_content}" + "\n")
             f.write(f"------------------------------------------------------------------------" + "\n")
 
