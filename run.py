@@ -6,6 +6,7 @@ from test_revote import Start_Revote
 from test_vote_result import Start_Eliminate
 from setting import models, all_models
 import re
+import json
 
 def get_vote_result():
     vote_results = {}
@@ -43,20 +44,31 @@ def get_vote_result():
     max_keys = [key for key, item in vote_results.items() if item['num'] == max_num]
 
     # 输出结果
-    print(f"num最大值为：{max_num}")
-    print(f"对应的key(s)为：{max_keys}")
+    # print(f"num最大值为：{max_num}")
+    # print(f"对应的key(s)为：{max_keys}")
 
-    vote_models = [k for k, v in vote_results.items() if v['vote'] == model]
+    # vote_models = [k for k, v in vote_results.items() if v['vote'] == model]
     
-    return model, vote_models
+    print("投票结果: ")
+    print(json.dumps(vote_results, indent=4, ensure_ascii=False))
+    print(f"------------------------------------------------------------------------")
+
+    return max_keys
 
 if __name__ == '__main__':
     while len(models) > 2:
         Start_Init()
         Start_Chat()
         Start_Vote()
+        
+        max_keys = get_vote_result()
+        if len(max_keys) > 1:
+            continue
+
         Start_Against()
         Start_Revote()
+
+        
         eliminated_model = Start_Eliminate()
 
         models.remove(eliminated_model)
