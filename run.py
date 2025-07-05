@@ -4,7 +4,7 @@ from test_vote import Start_Vote
 from test_against import Start_Against
 from test_revote import Start_Revote
 from test_vote_result import Start_Eliminate
-from setting import models
+from setting import models, all_models
 
 if __name__ == '__main__':
     Start_Init()
@@ -12,6 +12,7 @@ if __name__ == '__main__':
     Start_Vote()
     Start_Against()
     Start_Revote()
-    Start_Eliminate()
+    eliminated_model = Start_Eliminate()
 
-    print(models)
+    models.remove(eliminated_model)
+    all_models.remove(eliminated_model)
