@@ -85,7 +85,7 @@ def do_vote(model, chat_context):
         print(f"------------------------------------------------------------------------")
         return response_content
 
-def Vote(models):
+def Vote(models, chat_context):
     for model in models:
         do_vote(model, chat_context)
 
@@ -93,10 +93,10 @@ def Start_Vote():
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()
     
-    Vote(models)
+    Vote(models, chat_context)
 
 if __name__ == "__main__":
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()
     
-    Vote(models)
+    Vote(models, chat_context)

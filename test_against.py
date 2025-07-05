@@ -83,7 +83,7 @@ def do_against(model, vote_model, vote_context):
         print(f"------------------------------------------------------------------------")
         return response_content
 
-def Against(model, all_models):
+def Against(model, all_models, chat_context):
         
     with open(f"chat/chat-vote.txt", "r", encoding="utf-8") as f:
         chat_vote_context = f.read()
@@ -130,7 +130,7 @@ def Start_Against():
         chat_context = f.read()
 
     model, all_models = get_vote_result()    
-    Against(model, all_models)
+    Against(model, all_models, chat_context)
 
 if __name__ == "__main__":
 
@@ -138,4 +138,4 @@ if __name__ == "__main__":
         chat_context = f.read()
 
     model, all_models = get_vote_result()    
-    Against(model, all_models)
+    Against(model, all_models, chat_context)
