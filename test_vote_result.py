@@ -46,9 +46,9 @@ def get_eliminator():
             revote_results[model]["vote"] = revoted_scores[0]
 
     # print(revote_results)
-    print("重新投票结果: ")
-    print(json.dumps(vote_results, indent=4, ensure_ascii=False))
-    print(f"------------------------------------------------------------------------")
+    # print("重新投票结果: ")
+    # print(json.dumps(vote_results, indent=4, ensure_ascii=False))
+    # print(f"------------------------------------------------------------------------")
 
     max_num = -float('inf')  # 初始化为负无穷（确保第一个数会被替换）
     max_key = None          # 初始化为 None
