@@ -10,6 +10,19 @@ def dir_clear(target_dir):
     else:
         target_dir.mkdir(exist_ok=True)
 
+def Start_Init():
+    # 定义目标目录
+    chat_dir = Path("chat")
+    vote_dir = Path("vote")
+    against_dir = Path("against")
+    revote_dir = Path("revote")
+
+    # 清空目标目录
+    dir_clear(chat_dir)
+    dir_clear(vote_dir)
+    dir_clear(against_dir)
+    dir_clear(revote_dir)
+
 if __name__ == "__main__":
     # 定义目标目录
     chat_dir = Path("chat")

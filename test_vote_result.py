@@ -64,6 +64,10 @@ def get_eliminator():
     print(f"vote 为 {model} 的键有: {all_models}")
 
     print(f"淘汰者: {model}")
+    models.remove(model)
+
+def Start_Eliminate():
+    get_eliminator()
 
 if __name__ == "__main__":
     get_eliminator()

@@ -89,6 +89,12 @@ def Vote(models):
     for model in models:
         do_vote(model, chat_context)
 
+def Start_Vote():
+    with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
+        chat_context = f.read()
+    
+    Vote(models)
+
 if __name__ == "__main__":
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
         chat_context = f.read()

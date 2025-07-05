@@ -125,6 +125,13 @@ def get_vote_result():
 
     return model, all_models
 
+def Start_Against():
+    with open(f"chat/chat.txt", "r", encoding="utf-8") as f:
+        chat_context = f.read()
+
+    model, all_models = get_vote_result()    
+    Against(model, all_models)
+
 if __name__ == "__main__":
 
     with open(f"chat/chat.txt", "r", encoding="utf-8") as f:

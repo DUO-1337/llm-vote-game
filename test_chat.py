@@ -118,6 +118,12 @@ def Chat_Room(models):
         models = all_models.copy()
         last_model = ""
 
+def Start_Chat():
+    with open(f"chat/chat.txt", "w", encoding="utf-8") as f:
+        pass
+
+    Chat_Room(models=models)
+
 if __name__ == "__main__":
     with open(f"chat/chat.txt", "w", encoding="utf-8") as f:
         pass
