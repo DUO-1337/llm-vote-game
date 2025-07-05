@@ -41,7 +41,7 @@ kimi:260b的回复最符合AI的特征，表现为高度模式化、重复性内
 kimi:260b
 """
 
-def do_revote(vote_model, model, vote_context, against_context,):
+def do_revote(vote_model, model, chat_context, vote_context, against_context,):
     try:
         # print("正在调用模型: " + model)
         response: ChatResponse = chat(
@@ -101,7 +101,7 @@ def do_revote(vote_model, model, vote_context, against_context,):
         return response_content
 
 
-def Rerevote(model, all_models):
+def Rerevote(model, all_models, chat_context):
     with open(f"chat/chat-vote-against.txt", "r", encoding="utf-8") as f:
         chat_vote_against_context = f.read()
     
@@ -112,7 +112,7 @@ def Rerevote(model, all_models):
                 vote_context = fp.read()
             with open(f"against/{model.replace(':', '-')}-against-{vote_model.replace(':', '-')}.txt", "r", encoding="utf-8") as fp:
                 against_context = fp.read()
-            response_content = do_revote(vote_model, model, vote_context, against_context,)
+            response_content = do_revote(vote_model, model, chat_context, vote_context, against_context,)
             f.write(f"[{vote_model}]: {response_content}" + "\n")
             f.write(f"------------------------------------------------------------------------" + "\n")
 
@@ -149,7 +149,7 @@ def Start_Revote():
         chat_context = f.read()
 
     model, all_models = get_vote_result()
-    Rerevote(model, all_models)
+    Rerevote(model, all_models, chat_context)
     return
 
 if __name__ == "__main__":
@@ -158,4 +158,4 @@ if __name__ == "__main__":
         chat_context = f.read()
 
     model, all_models = get_vote_result()
-    Rerevote(model, all_models)
+    Rerevote(model, all_models, chat_context)

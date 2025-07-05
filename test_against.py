@@ -122,7 +122,6 @@ def get_vote_result():
     
     model = max(vote_results.keys(), key=lambda k: vote_results[k]['num'])
     all_models = [k for k, v in vote_results.items() if v['vote'] == model]
-    print(f"vote 为 {model} 的键有: {all_models}")
     
     return model, all_models
 
