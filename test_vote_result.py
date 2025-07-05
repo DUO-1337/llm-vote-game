@@ -63,7 +63,9 @@ def get_eliminator():
 
     print(f"vote 为 {model} 的键有: {all_models}")
 
-    print(f"淘汰者: {model}")
+    print(f"                    |")
+    print(f"淘汰者: {model}      |")
+    print(f"                    |")
     
     return model
 

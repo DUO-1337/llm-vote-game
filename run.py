@@ -7,6 +7,7 @@ from test_vote_result import Start_Eliminate
 from setting import models, all_models
 
 if __name__ == '__main__':
+    
     Start_Init()
     Start_Chat()
     Start_Vote()
